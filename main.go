@@ -19,12 +19,12 @@ func main() {
 	}
 
 	var inp_path string
-	out_path := "../videos/compressed/"
+	out_path := "../videos/test/"
 
 	for ind, file := range files {
 		inp_path = inp_dir + file.Name()
 		err = ffmpeg.Input(inp_path).
-			Output(out_path+file.Name(), ffmpeg.KwArgs{"an": "", "c:v": "libx265", "pix_fmt": "yuv420p", "r": 24}).
+			Output(out_path+file.Name(), ffmpeg.KwArgs{"an": "", "pix_fmt": "yuv420p", "r": 24}).
 			OverWriteOutput().
 			Run()
 		if err != nil {
